@@ -1,0 +1,6 @@
+numpy==1.6.2
+PyYAML==3.10
+nltk==2.0.1
+tweepy==1.10
+web.py==0.37
+wsgiref==0.1.2

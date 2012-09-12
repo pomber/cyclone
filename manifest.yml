@@ -1,0 +1,13 @@
+--- 
+applications: 
+  .: 
+    instances: 1
+    mem: 64M
+    framework: 
+      info: 
+        description: Python WSGI Application
+        exec: 
+        mem: 64M
+      name: wsgi
+    name: cyclone
+    url: ${name}.${target-base}
