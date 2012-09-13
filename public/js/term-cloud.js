@@ -49,7 +49,7 @@ function TermCloud(selector) {
 			.attr("transform", function(d) { return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")"; })
 			.style("font-size", function(d) { return d.size + "px"; })
 			.on("click", function(d) {
-				window.location.href = "https://twitter.com/#!/search/" + d.text;
+				window.open("https://twitter.com/#!/search/" + d.text, "_blank");
 			})
 			.style("opacity", 1e-6)
 			.transition()
