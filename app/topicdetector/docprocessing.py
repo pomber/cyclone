@@ -3,13 +3,15 @@ from math import log
 import nltk
 
 def get_terms(doc):
-	tokens = nltk.word_tokenize(doc)
+	tokens = tokenize(doc)
 	terms = set()
 	for token in tokens:
 		if token.isalpha():
 			terms.add(token.lower())
 	return terms
 
+def tokenize(doc):
+	return nltk.word_tokenize(doc)
 
 def get_tf(term, terms_counter):
 	return log(terms_counter.value(term), 2)
