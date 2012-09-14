@@ -1,4 +1,5 @@
 from topicdetector.termscounterpersistence import load_terms_counter
+from topicdetector.termscounterpersistence import terms_counter_as_text
 from topicdetector.topicdetector import TopicDetector
 from tweetsource.tweetsource import TweetSource
 from eventstream.eventstream import EventStream
@@ -43,6 +44,11 @@ class TopicsSource(object):
 
 	def get_current_topics(self):
 		return self._topics
+
+	def get_terms_counter_as_text(self):
+		terms_counter = self._topicdetector.get_terms_counter()
+		return terms_counter_as_text(terms_counter)
+
 
 def _normalize_topics(topics):
 	max_weight = max([t.weight for t in topics])

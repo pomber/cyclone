@@ -21,3 +21,8 @@ def load_terms_counter(filename):
 			terms_counts[term] = count
 	return TermsCounter(counts=terms_counts, docs_count=docs_count)
 
+def terms_counter_as_text(terms_counter):
+	lines = [str(terms_counter.docs_count())]
+	for term, count in terms_counter.most_common():
+		lines.append(u"{0:9d} {1}".format(count, term))
+	return "\n".join(lines)

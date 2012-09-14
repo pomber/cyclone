@@ -21,6 +21,8 @@ def should_ignore(token):
 		return True
 	if token.startswith("#"):
 		return True
+	if token.startswith("http"):
+		return True
 	return False
 
 def normalize(token):

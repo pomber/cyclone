@@ -3,7 +3,11 @@ import web
 import mimetypes
 from web import http
 
-urls = ("/", "Index", "/topics", "Topics", '/(?:css|img|js|rss)/.+', 'Public')
+urls = (
+	"/", "Index", 
+	"/topics", "Topics", 
+	"/termscounter", "TermsCounter", 
+	'/(?:css|img|js|rss)/.+', 'Public')
 app = web.application(urls, globals())
 render = web.template.render('views/')
 public_dir = 'public'
@@ -19,6 +23,10 @@ class Topics:
 		topics = topics_source.get_current_topics()
 		web.header('Content-Type', 'application/json')
 		return json.dumps(topics)
+
+class TermsCounter:
+	def GET(self):
+		return topics_source.get_terms_counter_as_text()
 
 class Public:
 	def GET(self): 

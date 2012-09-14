@@ -22,6 +22,9 @@ class TopicDetector(object):
 
 		return [Topic(term, weights[term]) for term in top_terms[:self.topics_count]]
 
+	def get_terms_counter(self):
+		return self._terms_counter
+
 	def _get_terms_counter(self, docset):
 		terms_counter = TermsCounter()
 		for doc in docset.stream():
