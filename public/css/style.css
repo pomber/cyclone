@@ -1,0 +1,11 @@
+#cloud {
+	width: 1000px;
+	height: 600px;
+}
+
+#shortcuts {
+	position: absolute;
+	bottom: 10px;
+	right: 30px;
+	color: #555;
+}

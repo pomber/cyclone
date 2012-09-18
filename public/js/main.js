@@ -1,10 +1,17 @@
 function reloadCloud() {
-	$.getJSON('/topics', termCloud.refresh);	
+	if (!pause) {
+		$.getJSON('/topics', termCloud.refresh);	
+	}
 }
 
-$("#vis").center();
-var termCloud = new TermCloud("#vis");
+$("#cloud").center();
+var pause = false
+var termCloud = new TermCloud("#cloud");
 reloadCloud();
 
 setInterval(reloadCloud, 3000);
+
+$(document).bind('keydown', 'p', function() {
+	pause = !pause;
+});
 
