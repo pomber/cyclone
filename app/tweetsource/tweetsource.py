@@ -22,7 +22,8 @@ class TweetSource(StreamListener):
 
     def on_status(self, status):
         text = status.text.replace("\n","|")
-        self._listener.new_document(text)
+        if not text.lower().startswith("rt"):
+            self._listener.new_document(text)
         return True
 
     def on_error(self, status_code):

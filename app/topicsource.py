@@ -51,6 +51,9 @@ class TopicsSource(object):
 
 
 def _normalize_topics(topics):
+	if len(topics) is 0:
+		return []
+		
 	max_weight = max([t.weight for t in topics])
 	min_weight = min([t.weight for t in topics])
 	return [{"text": t.term, "weight": _normalize_weight(t.weight, max_weight, min_weight)} for t in topics]
