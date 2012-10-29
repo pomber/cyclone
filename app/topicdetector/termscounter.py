@@ -20,6 +20,10 @@ class TermsCounter(object):
 		self._docs_count += other._docs_count
 		self._remove_low_counts()
 
+	def subtract(self, other):
+		self._counter -= other._counter
+		self._docs_count -= other._docs_count
+
 	def list(self):
 		return list(self._counter)
 

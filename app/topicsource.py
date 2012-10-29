@@ -8,7 +8,10 @@ from clocksource.timer import Timer
 from stream.stream import StreamFactory
 from stream.stream import Stream
 from threading import Thread
+#TODO delete:
+from datetime import datetime
 from config import config
+import sys
 
 class TopicsSource(object):
 
@@ -32,15 +35,20 @@ class TopicsSource(object):
 
 	def _create_topicdetector(self):
 		topics_count = config["topics.count"]
+		queue_size = config["topics.queue-size"]
 
 		terms_counter_path = config["tc.path"]
 		terms_counter = load_terms_counter(terms_counter_path)
-		return TopicDetector(terms_counter, topics_count=topics_count)
+		return TopicDetector(terms_counter, topics_count=topics_count, queue_size=queue_size)
 
 	def _start(self):
+		#TODO delete:
+		sys.stderr.write(str(datetime.now())+" - Starting topic detection.\n")
 		for docset in self._docset_stream:
 			topics = self._topicdetector.get_topics(docset)
-			self._topics = _normalize_topics(topics)
+			self._topics = _normalize_topics(topics)			
+			#TODO delete:
+			sys.stderr.write(str(datetime.now())+" - New docset - " + str(len(topics)) + "\n")
 
 	def get_current_topics(self):
 		return self._topics
