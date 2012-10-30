@@ -1,6 +1,7 @@
 function reloadCloud() {
 	if (!pause) {
-		$.getJSON('/topics', termCloud.refresh);	
+		var url = '/topics?p=' + new Date().getTime();
+		$.getJSON(url, termCloud.refresh);
 	}
 }
 
